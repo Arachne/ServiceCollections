@@ -1,0 +1,24 @@
+extensions:
+    arachne.service_collections: Arachne\ServiceCollections\DI\ServiceCollectionsExtension
+    test: Tests\Integration\Fixtures\TestExtension
+
+services:
+    foo1:
+        class: ArrayObject([ foo1 ])
+        tags:
+            foo: name1
+
+    foo2:
+        class: ArrayObject([ foo2 ])
+        tags:
+            foo:
+                - name2
+                - name3
+
+    foo3:
+        class: ArrayObject([ foo3 ])
+        tags:
+            foo:
+                arachne.service_collections.resolver: name4
+                arachne.service_collections.iterator_resolver: name4
+                - name5

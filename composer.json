@@ -1,0 +1,36 @@
+{
+    "name": "arachne/service-collections",
+    "description": "Resolvers and iterators over services for nette/di. Used by arachne/forms and other libraries.",
+    "type": "library",
+    "keywords": [ "nette", "arachne", "di" ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jáchym Toušek",
+            "homepage": "http://enumag.cz",
+            "email": "enumag@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^5.4.0|^7.0.0",
+        "nette/di": "^2.3.0",
+        "nette/utils": "^2.3.0"
+    },
+    "require-dev": {
+        "php": "^5.5.0|^7.0.0",
+        "arachne/codeception": "^0.7.3",
+        "codeception/codeception": "~2.2.0",
+        "eloquent/phony": "^0.13.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Arachne\\ServiceCollections\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Unit\\": "tests/unit/src",
+            "Tests\\Integration\\": "tests/integration/src"
+        }
+    }
+}
