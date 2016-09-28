@@ -92,7 +92,7 @@ class ServiceCollectionsExtension extends CompilerExtension
             );
         }
 
-        $this->overrides[$type][$tag] = call_user_func($factory, $this->getCollection($type, $tag));
+        $this->overrides[$type][$tag] = $factory($this->getCollection($type, $tag));
     }
 
     public function loadConfiguration()
