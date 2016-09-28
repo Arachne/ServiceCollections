@@ -47,8 +47,10 @@ class ServiceCollectionsExtensionTest extends Unit
         self::assertSame($service, $this->extension->getCollection($type, 'tag', DateTime::class));
         self::assertSame($service, $this->extension->getCollection($type, 'tag'));
 
-        $this->expectException(AssertionException::class);
-        $this->expectExceptionMessage($message . ' for tag "tag" already exists with implement type "DateTime".');
+        $this->setExpectedException(
+            AssertionException::class,
+            $message . ' for tag "tag" already exists with implement type "DateTime".'
+        );
 
         $this->extension->getCollection($type, 'tag', DateTimeZone::class);
     }
@@ -81,8 +83,8 @@ class ServiceCollectionsExtensionTest extends Unit
 
         self::assertSame($service, $this->extension->getCollection($type, 'tag', DateTime::class));
 
-        $this->expectException(AssertionException::class);
-        $this->expectExceptionMessage(
+        $this->setExpectedException(
+            AssertionException::class,
             sprintf(
                 '%s for tag "tag" already exists. Try moving the extension that overrides it immediately after "%s".',
                 $message,
