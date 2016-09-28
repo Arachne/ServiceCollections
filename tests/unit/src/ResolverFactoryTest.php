@@ -47,7 +47,7 @@ class ResolverFactoryTest extends Unit
             ->getService
             ->once()
             ->calledWith('service1');
-   }
+    }
 
     public function testInvalid()
     {

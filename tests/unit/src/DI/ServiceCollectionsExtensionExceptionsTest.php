@@ -80,7 +80,7 @@ class ServiceCollectionsExtensionExceptionsTest extends Unit
             ->addTag(
                 'tag',
                 [
-                    ServiceCollectionsExtension::ATTRIBUTE_RESOLVER => ['default']
+                    ServiceCollectionsExtension::ATTRIBUTE_RESOLVER => ['default'],
                 ]
             );
 

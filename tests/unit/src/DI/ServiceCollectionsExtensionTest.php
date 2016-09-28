@@ -31,7 +31,6 @@ class ServiceCollectionsExtensionTest extends Unit
         self::assertSame('service_collections.1.tag', $this->extension->getCollection(ServiceCollectionsExtension::TYPE_RESOLVER, 'tag'));
         self::assertSame('service_collections.1.tag', $this->extension->getCollection(ServiceCollectionsExtension::TYPE_RESOLVER, 'tag', DateTime::class));
         self::assertSame('service_collections.1.tag', $this->extension->getCollection(ServiceCollectionsExtension::TYPE_RESOLVER, 'tag', DateTime::class));
-
     }
 
     /**
@@ -49,7 +48,7 @@ class ServiceCollectionsExtensionTest extends Unit
 
         $this->setExpectedException(
             AssertionException::class,
-            $message . ' for tag "tag" already exists with implement type "DateTime".'
+            $message.' for tag "tag" already exists with implement type "DateTime".'
         );
 
         $this->extension->getCollection($type, 'tag', DateTimeZone::class);
@@ -92,7 +91,7 @@ class ServiceCollectionsExtensionTest extends Unit
             )
         );
 
-        $this->extension->overrideCollection($type, 'tag', function () {});
+        $this->extension->overrideCollection($type, 'tag', Phony::stub());
     }
 
     public function dataForCollectionException()
