@@ -10,6 +10,8 @@ use Codeception\Test\Unit;
  */
 class ServiceCollectionsExtensionTest extends Unit
 {
+    protected $tester;
+
     public function testResolver()
     {
         $resolver = $this->tester->getContainer()->getService('arachne.service_collections.1.foo');
