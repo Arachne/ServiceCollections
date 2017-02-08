@@ -1,6 +1,6 @@
 {
     "name": "arachne/service-collections",
-    "description": "Resolvers and iterators over services for nette/di. Used by arachne/forms and other libraries.",
+    "description": "Resolvers and generators of services for nette/di. Used by arachne/forms and other libraries.",
     "type": "library",
     "keywords": [ "nette", "arachne", "di" ],
     "license": "MIT",
@@ -12,14 +12,13 @@
         }
     ],
     "require": {
-        "php": "^5.4.0|^7.0.0",
-        "nette/di": "^2.3.0",
-        "nette/utils": "^2.3.0"
+        "php": "^7.1.0",
+        "nette/di": "^2.4.0",
+        "nette/utils": "^2.4.0"
     },
     "require-dev": {
-        "php": "^5.5.0|^7.0.0",
         "arachne/codeception": "^0.7.3",
-        "codeception/codeception": "~2.2.0",
+        "codeception/codeception": "^2.2.0",
         "eloquent/phony": "^0.13.5"
     },
     "autoload": {
