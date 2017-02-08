@@ -69,12 +69,10 @@ class IteratorFactoryTest extends Unit
 
         $this->containerHandle
             ->getService
-            ->once()
             ->calledWith('service1');
 
         $this->containerHandle
             ->getService
-            ->once()
             ->calledWith('service2');
     }
 }

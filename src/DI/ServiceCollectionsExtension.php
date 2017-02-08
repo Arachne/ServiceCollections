@@ -7,6 +7,8 @@ namespace Arachne\ServiceCollections\DI;
 use Arachne\ServiceCollections\IteratorFactory;
 use Arachne\ServiceCollections\IteratorResolverFactory;
 use Arachne\ServiceCollections\ResolverFactory;
+use Closure;
+use Iterator;
 use Nette\DI\CompilerExtension;
 use Nette\Utils\AssertionException;
 
@@ -113,7 +115,7 @@ class ServiceCollectionsExtension extends CompilerExtension
 
             $this->addService(
                 self::TYPE_RESOLVER.'.'.$tag,
-                \Closure::class,
+                Closure::class,
                 ResolverFactory::class,
                 $this->processResolverServices($tag)
             );
@@ -268,5 +270,7 @@ class ServiceCollectionsExtension extends CompilerExtension
             case self::TYPE_ITERATOR_RESOLVER:
                 return 'Iterator resolver';
         }
+
+        throw new \InvalidArgumentException();
     }
 }

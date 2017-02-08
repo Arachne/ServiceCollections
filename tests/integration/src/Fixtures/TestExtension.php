@@ -19,7 +19,6 @@ class TestExtension extends CompilerExtension
         $serviceCollection->getCollection(ServiceCollectionsExtension::TYPE_RESOLVER, 'foo', 'ArrayObject');
         $serviceCollection->getCollection(ServiceCollectionsExtension::TYPE_ITERATOR, 'foo', 'ArrayObject');
         $serviceCollection->getCollection(ServiceCollectionsExtension::TYPE_ITERATOR_RESOLVER, 'foo', 'ArrayObject');
-
         $serviceCollection->getCollection(ServiceCollectionsExtension::TYPE_RESOLVER, 'bar');
     }
 }

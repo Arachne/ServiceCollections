@@ -109,10 +109,6 @@ class ServiceCollectionsExtensionTest extends Unit
                 'type' => ServiceCollectionsExtension::TYPE_ITERATOR_RESOLVER,
                 'message' => 'Iterator resolver',
             ],
-            [
-                'type' => 0,
-                'message' => '',
-            ],
         ];
     }
 }
