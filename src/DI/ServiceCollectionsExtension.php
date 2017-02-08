@@ -10,6 +10,9 @@
 
 namespace Arachne\ServiceCollections\DI;
 
+use Arachne\ServiceCollections\IteratorFactory;
+use Arachne\ServiceCollections\IteratorResolverFactory;
+use Arachne\ServiceCollections\ResolverFactory;
 use Nette\DI\CompilerExtension;
 use Nette\Utils\AssertionException;
 
@@ -100,13 +103,13 @@ class ServiceCollectionsExtension extends CompilerExtension
         $builder = $this->getContainerBuilder();
 
         $builder->addDefinition($this->prefix('resolverFactory'))
-            ->setClass('Arachne\ServiceCollections\ResolverFactory');
+            ->setClass(ResolverFactory::class);
 
         $builder->addDefinition($this->prefix('iteratorFactory'))
-            ->setClass('Arachne\ServiceCollections\IteratorFactory');
+            ->setClass(IteratorFactory::class);
 
         $builder->addDefinition($this->prefix('iteratorResolverFactory'))
-            ->setClass('Arachne\ServiceCollections\IteratorResolverFactory');
+            ->setClass(IteratorResolverFactory::class);
     }
 
     public function beforeCompile(): void
@@ -116,8 +119,8 @@ class ServiceCollectionsExtension extends CompilerExtension
 
             $this->addService(
                 self::TYPE_RESOLVER.'.'.$tag,
-                'Closure',
-                'Arachne\ServiceCollections\ResolverFactory',
+                \Closure::class,
+                ResolverFactory::class,
                 $this->processResolverServices($tag)
             );
         }
@@ -127,8 +130,8 @@ class ServiceCollectionsExtension extends CompilerExtension
 
             $this->addService(
                 self::TYPE_ITERATOR.'.'.$tag,
-                'Iterator',
-                'Arachne\ServiceCollections\IteratorFactory',
+                Iterator::class,
+                IteratorFactory::class,
                 $this->processIteratorServices($tag)
             );
         }
@@ -138,8 +141,8 @@ class ServiceCollectionsExtension extends CompilerExtension
 
             $this->addService(
                 self::TYPE_ITERATOR_RESOLVER.'.'.$tag,
-                'Closure',
-                'Arachne\ServiceCollections\IteratorResolverFactory',
+                Closure::class,
+                IteratorResolverFactory::class,
                 $this->processIteratorResolverServices($tag)
             );
         }
