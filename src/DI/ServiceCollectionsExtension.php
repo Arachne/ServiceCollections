@@ -50,7 +50,7 @@ class ServiceCollectionsExtension extends CompilerExtension
      *
      * @return string
      */
-    public function getCollection($type, $tag, $implement = null)
+    public function getCollection(int $type, string $tag, ?string $implement = null): string
     {
         if (isset($this->overrides[$type][$tag])) {
             return $this->overrides[$type][$tag];
@@ -79,7 +79,7 @@ class ServiceCollectionsExtension extends CompilerExtension
      * @param string   $tag
      * @param callable $factory
      */
-    public function overrideCollection($type, $tag, callable $factory)
+    public function overrideCollection(int $type, string $tag, callable $factory): void
     {
         if (array_key_exists($tag, $this->services[$type])) {
             throw new AssertionException(
@@ -95,7 +95,7 @@ class ServiceCollectionsExtension extends CompilerExtension
         $this->overrides[$type][$tag] = $factory($this->getCollection($type, $tag));
     }
 
-    public function loadConfiguration()
+    public function loadConfiguration(): void
     {
         $builder = $this->getContainerBuilder();
 
@@ -109,7 +109,7 @@ class ServiceCollectionsExtension extends CompilerExtension
             ->setClass('Arachne\ServiceCollections\IteratorResolverFactory');
     }
 
-    public function beforeCompile()
+    public function beforeCompile(): void
     {
         foreach ($this->services[self::TYPE_RESOLVER] as $tag => $implement) {
             $this->checkImplementTypes($tag, $implement);
@@ -149,7 +149,7 @@ class ServiceCollectionsExtension extends CompilerExtension
      * @param string      $tag
      * @param string|null $implement
      */
-    private function checkImplementTypes($tag, $implement = null)
+    private function checkImplementTypes(string $tag, ?string $implement): void
     {
         if (!$implement) {
             return;
@@ -174,7 +174,7 @@ class ServiceCollectionsExtension extends CompilerExtension
      * @param string $factory
      * @param array  $services
      */
-    private function addService($name, $class, $factory, array $services)
+    private function addService(string $name, string $class, string $factory, array $services): void
     {
         $this
             ->getContainerBuilder()
@@ -189,7 +189,7 @@ class ServiceCollectionsExtension extends CompilerExtension
      *
      * @return array
      */
-    private function processResolverServices($tag)
+    private function processResolverServices(string $tag): array
     {
         $services = [];
         foreach ($this->getContainerBuilder()->findByTag($tag) as $key => $attributes) {
@@ -226,7 +226,7 @@ class ServiceCollectionsExtension extends CompilerExtension
      *
      * @return array
      */
-    private function processIteratorServices($tag)
+    private function processIteratorServices(string $tag): array
     {
         return array_keys($this->getContainerBuilder()->findByTag($tag));
     }
@@ -236,7 +236,7 @@ class ServiceCollectionsExtension extends CompilerExtension
      *
      * @return array
      */
-    private function processIteratorResolverServices($tag)
+    private function processIteratorResolverServices(string $tag): array
     {
         $services = [];
         foreach ($this->getContainerBuilder()->findByTag($tag) as $key => $attributes) {
@@ -261,7 +261,7 @@ class ServiceCollectionsExtension extends CompilerExtension
      *
      * @return string
      */
-    private function typeToString($type)
+    private function typeToString(int $type): string
     {
         switch ($type) {
             case self::TYPE_RESOLVER:

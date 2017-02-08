@@ -33,7 +33,7 @@ class IteratorFactory
     /**
      * @return Iterator
      */
-    public function create(array $services)
+    public function create(array $services): Iterator
     {
         return new Mapper(
             new ArrayIterator($services),

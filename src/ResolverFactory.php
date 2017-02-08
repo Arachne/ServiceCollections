@@ -33,9 +33,9 @@ class ResolverFactory
      *
      * @return Closure
      */
-    public function create(array $services)
+    public function create(array $services): Closure
     {
-        return function ($name) use ($services) {
+        return function (string $name) use ($services) {
             return isset($services[$name]) ? $this->container->getService($services[$name]) : null;
         };
     }
