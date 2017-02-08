@@ -46,12 +46,23 @@ class IteratorFactoryTest extends Unit
             'service2',
         ];
 
+        $iterator = $this->factory->create($services);
+
         self::assertEquals(
             [
                 (object) ['service1'],
                 (object) ['service2'],
             ],
-            iterator_to_array($this->factory->create($services))
+            iterator_to_array($iterator)
+        );
+
+        // Make the assert twice to ensure that the iterator is rewindable.
+        self::assertEquals(
+            [
+                (object) ['service1'],
+                (object) ['service2'],
+            ],
+            iterator_to_array($iterator)
         );
 
         $this->containerHandle
