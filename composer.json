@@ -1,6 +1,6 @@
 {
     "name": "arachne/service-collections",
-    "description": "Resolvers and generators of services for nette/di. Used by arachne/forms and other libraries.",
+    "description": "Resolvers and iterators over services for nette/di. Used by arachne/forms and other libraries.",
     "type": "library",
     "keywords": [ "nette", "arachne", "di" ],
     "license": "MIT",
