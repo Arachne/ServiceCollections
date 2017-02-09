@@ -13,14 +13,15 @@
     ],
     "require": {
         "php": "^7.1.0",
-        "nette/di": "^2.4.0",
-        "nette/utils": "^2.4.0"
+        "nette/di": "^3.0.0@alpha",
+        "nette/utils": "^3.0.0@alpha"
     },
     "require-dev": {
-        "arachne/codeception": "^0.7.3",
+        "arachne/codeception": "^1.0.0@alpha",
         "codeception/codeception": "^2.2.0",
         "eloquent/phony": "^0.14.0"
     },
+    "minimum-stability": "alpha",
     "autoload": {
         "psr-4": {
             "Arachne\\ServiceCollections\\": "src"
