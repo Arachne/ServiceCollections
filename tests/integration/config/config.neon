@@ -1,5 +1,5 @@
 extensions:
-    arachne.service_collections: Arachne\ServiceCollections\DI\ServiceCollectionsExtension
+    arachne.serviceCollections: Arachne\ServiceCollections\DI\ServiceCollectionsExtension
     test: Tests\Integration\Fixtures\TestExtension
 
 services:

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Integration;
 
+use Arachne\Codeception\Module\NetteDIModule;
 use ArrayObject;
 use Codeception\Test\Unit;
 
@@ -12,11 +13,14 @@ use Codeception\Test\Unit;
  */
 class ServiceCollectionsExtensionTest extends Unit
 {
+    /**
+     * @var NetteDIModule
+     */
     protected $tester;
 
     public function testResolver()
     {
-        $resolver = $this->tester->getContainer()->getService('arachne.service_collections.1.foo');
+        $resolver = $this->tester->getContainer()->getService('arachne.serviceCollections.1.foo');
 
         $this->assertEquals(new ArrayObject(['foo1']), call_user_func($resolver, 'name1'));
         $this->assertEquals(new ArrayObject(['foo2']), call_user_func($resolver, 'name2'));
@@ -28,7 +32,7 @@ class ServiceCollectionsExtensionTest extends Unit
 
     public function testIterator()
     {
-        $iterator = $this->tester->getContainer()->getService('arachne.service_collections.2.foo');
+        $iterator = $this->tester->getContainer()->getService('arachne.serviceCollections.2.foo');
 
         $this->assertEquals(
             [
@@ -42,7 +46,7 @@ class ServiceCollectionsExtensionTest extends Unit
 
     public function testIteratorResolver()
     {
-        $resolver = $this->tester->getContainer()->getService('arachne.service_collections.3.foo');
+        $resolver = $this->tester->getContainer()->getService('arachne.serviceCollections.3.foo');
 
         $this->assertEquals([new ArrayObject(['foo1'])], iterator_to_array(call_user_func($resolver, 'name1')));
         $this->assertEquals([new ArrayObject(['foo2'])], iterator_to_array(call_user_func($resolver, 'name2')));
