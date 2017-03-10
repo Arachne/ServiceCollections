@@ -13,11 +13,11 @@
     ],
     "require": {
         "php": "^7.1.0",
-        "nette/di": "^3.0.0@alpha",
-        "nette/utils": "^3.0.0@alpha"
+        "nette/di": "^3.0.0",
+        "nette/utils": "^3.0.0"
     },
     "require-dev": {
-        "arachne/codeception": "^1.0.0@alpha",
+        "arachne/codeception": "^1.0.0",
         "codeception/codeception": "^2.2.0",
         "eloquent/phony": "^0.14.0"
     },
@@ -44,8 +44,9 @@
             "@analyse",
             "@test"
         ],
-        "fix": "php-cs-fixer fix",
-        "analyse": "phpstan analyse --no-progress --level=4 --configuration=phpstan.neon src tests",
+        "tools": "sh composer-tools.sh",
+        "fix": "\"vendor-tools/bin/php-cs-fixer\" fix",
+        "analyse": "\"vendor-tools/bin/phpstan\" analyse --no-progress --level=4 --configuration=phpstan.neon src tests",
         "test": [
             "\"vendor/bin/codecept\" build",
             "\"vendor/bin/codecept\" run"
