@@ -12,7 +12,7 @@ use Nette\DI\CompilerExtension;
  */
 class TestExtension extends CompilerExtension
 {
-    public function loadConfiguration()
+    public function loadConfiguration(): void
     {
         $serviceCollection = current($this->compiler->getExtensions(ServiceCollectionsExtension::class));
 

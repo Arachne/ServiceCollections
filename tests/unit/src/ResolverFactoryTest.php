@@ -26,7 +26,7 @@ class ResolverFactoryTest extends Unit
      */
     private $containerHandle;
 
-    protected function _before()
+    protected function _before(): void
     {
         $services = [
             'valid' => 'service1',
@@ -37,7 +37,7 @@ class ResolverFactoryTest extends Unit
         $this->resolver = $factory->create($services);
     }
 
-    public function testValid()
+    public function testValid(): void
     {
         $this->containerHandle
             ->getService
@@ -51,7 +51,7 @@ class ResolverFactoryTest extends Unit
             ->calledWith('service1');
     }
 
-    public function testInvalid()
+    public function testInvalid(): void
     {
         self::assertSame(null, call_user_func($this->resolver, 'invalid'));
     }

@@ -25,13 +25,13 @@ class IteratorFactoryTest extends Unit
      */
     private $containerHandle;
 
-    protected function _before()
+    protected function _before(): void
     {
         $this->containerHandle = Phony::mock(Container::class);
         $this->factory = new IteratorFactory($this->containerHandle->get());
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->containerHandle
             ->getService

@@ -27,7 +27,7 @@ class IteratorResolverFactoryTest extends Unit
      */
     private $factoryHandle;
 
-    protected function _before()
+    protected function _before(): void
     {
         $services = [
             'valid' => [
@@ -40,7 +40,7 @@ class IteratorResolverFactoryTest extends Unit
         $this->resolver = $factory->create($services);
     }
 
-    public function testValid()
+    public function testValid(): void
     {
         $this->factoryHandle
             ->create
@@ -54,7 +54,7 @@ class IteratorResolverFactoryTest extends Unit
             ->calledWith(['service1']);
     }
 
-    public function testInvalid()
+    public function testInvalid(): void
     {
         self::assertSame(null, call_user_func($this->resolver, 'invalid'));
     }

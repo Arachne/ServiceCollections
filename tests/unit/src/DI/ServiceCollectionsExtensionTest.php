@@ -22,7 +22,7 @@ class ServiceCollectionsExtensionTest extends Unit
      */
     private $extension;
 
-    protected function _before()
+    protected function _before(): void
     {
         $this->extension = new ServiceCollectionsExtension();
         $this->extension->setCompiler(Phony::mock(Compiler::class)->get(), 'service_collections');
@@ -41,7 +41,7 @@ class ServiceCollectionsExtensionTest extends Unit
      * @param int    $type
      * @param string $message
      */
-    public function testGetCollectionException($type, $message)
+    public function testGetCollectionException($type, $message): void
     {
         $service = sprintf('service_collections.%d.tag', $type);
 
@@ -54,7 +54,7 @@ class ServiceCollectionsExtensionTest extends Unit
         $this->extension->getCollection($type, 'tag', DateTimeZone::class);
     }
 
-    public function testOverrideCollection()
+    public function testOverrideCollection(): void
     {
         $stub = Phony::stub();
         $stub->returns('collection_override');
@@ -76,7 +76,7 @@ class ServiceCollectionsExtensionTest extends Unit
      * @param int    $type
      * @param string $message
      */
-    public function testOverrideCollectionException($type, $message)
+    public function testOverrideCollectionException($type, $message): void
     {
         $service = sprintf('service_collections.%d.tag', $type);
 

@@ -18,7 +18,7 @@ class ServiceCollectionsExtensionTest extends Unit
      */
     protected $tester;
 
-    public function testResolver()
+    public function testResolver(): void
     {
         $resolver = $this->tester->getContainer()->getService('arachne.serviceCollections.1.foo');
 
@@ -30,7 +30,7 @@ class ServiceCollectionsExtensionTest extends Unit
         $this->assertSame(null, call_user_func($resolver, 'name6'));
     }
 
-    public function testIterator()
+    public function testIterator(): void
     {
         $iterator = $this->tester->getContainer()->getService('arachne.serviceCollections.2.foo');
 
@@ -44,7 +44,7 @@ class ServiceCollectionsExtensionTest extends Unit
         );
     }
 
-    public function testIteratorResolver()
+    public function testIteratorResolver(): void
     {
         $resolver = $this->tester->getContainer()->getService('arachne.serviceCollections.3.foo');
 

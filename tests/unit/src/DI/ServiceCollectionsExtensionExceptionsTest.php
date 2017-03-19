@@ -26,7 +26,7 @@ class ServiceCollectionsExtensionExceptionsTest extends Unit
      */
     private $builder;
 
-    protected function _before()
+    protected function _before(): void
     {
         $compiler = new Compiler();
         $this->extension = new ServiceCollectionsExtension();
@@ -38,7 +38,7 @@ class ServiceCollectionsExtensionExceptionsTest extends Unit
      * @expectedException \Nette\Utils\AssertionException
      * @expectedExceptionMessage Service "timezone" is not an instance of "DateTimeZone".
      */
-    public function testImplementTypeException()
+    public function testImplementTypeException(): void
     {
         $this->extension->getCollection(ServiceCollectionsExtension::TYPE_RESOLVER, 'tag', DateTimeZone::class);
         $this->builder->addDefinition('timezone')
@@ -53,7 +53,7 @@ class ServiceCollectionsExtensionExceptionsTest extends Unit
      * @expectedException \Nette\Utils\AssertionException
      * @expectedExceptionMessage Service "timezone" has no resolver name for tag "tag".
      */
-    public function testNoResolverName()
+    public function testNoResolverName(): void
     {
         $this->extension->getCollection(ServiceCollectionsExtension::TYPE_RESOLVER, 'tag', DateTimeZone::class);
 
@@ -69,7 +69,7 @@ class ServiceCollectionsExtensionExceptionsTest extends Unit
      * @expectedException \Nette\Utils\AssertionException
      * @expectedExceptionMessage Services "timezone" and "timezone_duplicate" both have resolver name "default" for tag "tag".
      */
-    public function testDuplicateResolverName()
+    public function testDuplicateResolverName(): void
     {
         $this->extension->getCollection(ServiceCollectionsExtension::TYPE_RESOLVER, 'tag', DateTimeZone::class);
 
@@ -94,7 +94,7 @@ class ServiceCollectionsExtensionExceptionsTest extends Unit
      * @expectedException \Nette\Utils\AssertionException
      * @expectedExceptionMessage Service "timezone" has no iterator resolver name for tag "tag".
      */
-    public function testNoResolverIteratorName()
+    public function testNoResolverIteratorName(): void
     {
         $this->extension->getCollection(ServiceCollectionsExtension::TYPE_ITERATOR_RESOLVER, 'tag', DateTimeZone::class);
 
