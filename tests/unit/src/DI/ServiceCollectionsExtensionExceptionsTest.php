@@ -10,6 +10,7 @@ use DateTime;
 use DateTimeZone;
 use Nette\DI\Compiler;
 use Nette\DI\ContainerBuilder;
+use Nette\Utils\AssertionException;
 
 /**
  * @author Jáchym Toušek <enumag@gmail.com>
@@ -34,10 +35,6 @@ class ServiceCollectionsExtensionExceptionsTest extends Unit
         $this->builder = $compiler->getContainerBuilder();
     }
 
-    /**
-     * @expectedException \Nette\Utils\AssertionException
-     * @expectedExceptionMessage Service "timezone" is not an instance of "DateTimeZone".
-     */
     public function testImplementTypeException(): void
     {
         $this->extension->getCollection(ServiceCollectionsExtension::TYPE_RESOLVER, 'tag', DateTimeZone::class);
@@ -46,13 +43,15 @@ class ServiceCollectionsExtensionExceptionsTest extends Unit
             ->addTag('tag');
 
         $this->extension->loadConfiguration();
-        $this->extension->beforeCompile();
+
+        try {
+            $this->extension->beforeCompile();
+            self::fail();
+        } catch (AssertionException $e) {
+            self::assertSame('Service "timezone" is not an instance of "DateTimeZone".', $e->getMessage());
+        }
     }
 
-    /**
-     * @expectedException \Nette\Utils\AssertionException
-     * @expectedExceptionMessage Service "timezone" has no resolver name for tag "tag".
-     */
     public function testNoResolverName(): void
     {
         $this->extension->getCollection(ServiceCollectionsExtension::TYPE_RESOLVER, 'tag', DateTimeZone::class);
@@ -62,13 +61,15 @@ class ServiceCollectionsExtensionExceptionsTest extends Unit
             ->addTag('tag');
 
         $this->extension->loadConfiguration();
-        $this->extension->beforeCompile();
+
+        try {
+            $this->extension->beforeCompile();
+            self::fail();
+        } catch (AssertionException $e) {
+            self::assertSame('Service "timezone" has no resolver name for tag "tag".', $e->getMessage());
+        }
     }
 
-    /**
-     * @expectedException \Nette\Utils\AssertionException
-     * @expectedExceptionMessage Services "timezone" and "timezone_duplicate" both have resolver name "default" for tag "tag".
-     */
     public function testDuplicateResolverName(): void
     {
         $this->extension->getCollection(ServiceCollectionsExtension::TYPE_RESOLVER, 'tag', DateTimeZone::class);
@@ -87,13 +88,15 @@ class ServiceCollectionsExtensionExceptionsTest extends Unit
             );
 
         $this->extension->loadConfiguration();
-        $this->extension->beforeCompile();
+
+        try {
+            $this->extension->beforeCompile();
+            self::fail();
+        } catch (AssertionException $e) {
+            self::assertSame('Services "timezone" and "timezone_duplicate" both have resolver name "default" for tag "tag".', $e->getMessage());
+        }
     }
 
-    /**
-     * @expectedException \Nette\Utils\AssertionException
-     * @expectedExceptionMessage Service "timezone" has no iterator resolver name for tag "tag".
-     */
     public function testNoResolverIteratorName(): void
     {
         $this->extension->getCollection(ServiceCollectionsExtension::TYPE_ITERATOR_RESOLVER, 'tag', DateTimeZone::class);
@@ -103,6 +106,12 @@ class ServiceCollectionsExtensionExceptionsTest extends Unit
             ->addTag('tag');
 
         $this->extension->loadConfiguration();
-        $this->extension->beforeCompile();
+
+        try {
+            $this->extension->beforeCompile();
+            self::fail();
+        } catch (AssertionException $e) {
+            self::assertSame('Service "timezone" has no iterator resolver name for tag "tag".', $e->getMessage());
+        }
     }
 }
