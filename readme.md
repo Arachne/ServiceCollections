@@ -17,5 +17,5 @@ Installation
 The best way to install Arachne/ServiceCollections is using [Composer](http://getcomposer.org/).
 
 ```sh
-$ composer require arachne/service-collections
+composer require arachne/service-collections
 ```
