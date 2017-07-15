@@ -7,3 +7,6 @@ parameters:
         - '#^Access to an undefined property Eloquent\\Phony\\Mock\\Handle\\InstanceHandle::\$[a-zA-Z]+#'
         - '#^Parameter \#[0-9]++ \$[a-zA-Z]++ of class [a-zA-Z\\]++ constructor expects [a-zA-Z\\]++, Eloquent\\Phony\\Mock\\Mock given#'
         - '#^Parameter \#[0-9]++ \$[a-zA-Z]++ of method [a-zA-Z\\:]++\(\) expects [a-zA-Z\\]++, Eloquent\\Phony\\Mock\\Mock given#'
+
+    excludes_analyse:
+        - %rootDir%/../../../tests/_helpers/*
