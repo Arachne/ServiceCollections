@@ -42,13 +42,6 @@ class ServiceCollectionsExtension extends CompilerExtension
         self::TYPE_ITERATOR_RESOLVER => [],
     ];
 
-    /**
-     * @param int    $type
-     * @param string $tag
-     * @param string $implement
-     *
-     * @return string
-     */
     public function getCollection(int $type, string $tag, ?string $implement = null): string
     {
         if (isset($this->overrides[$type][$tag])) {
@@ -73,11 +66,6 @@ class ServiceCollectionsExtension extends CompilerExtension
         return $this->prefix($type.'.'.$tag);
     }
 
-    /**
-     * @param int      $type
-     * @param string   $tag
-     * @param callable $factory
-     */
     public function overrideCollection(int $type, string $tag, callable $factory): void
     {
         if (array_key_exists($tag, $this->services[$type])) {
@@ -144,10 +132,6 @@ class ServiceCollectionsExtension extends CompilerExtension
         }
     }
 
-    /**
-     * @param string      $tag
-     * @param string|null $implement
-     */
     private function checkImplementTypes(string $tag, ?string $implement): void
     {
         if (!$implement) {
@@ -167,12 +151,6 @@ class ServiceCollectionsExtension extends CompilerExtension
         }
     }
 
-    /**
-     * @param string $name
-     * @param string $class
-     * @param string $factory
-     * @param array  $services
-     */
     private function addService(string $name, string $class, string $factory, array $services): void
     {
         $this
@@ -183,11 +161,6 @@ class ServiceCollectionsExtension extends CompilerExtension
             ->setAutowired(false);
     }
 
-    /**
-     * @param string $tag
-     *
-     * @return array
-     */
     private function processResolverServices(string $tag): array
     {
         $services = [];
@@ -220,21 +193,11 @@ class ServiceCollectionsExtension extends CompilerExtension
         return $services;
     }
 
-    /**
-     * @param string $tag
-     *
-     * @return array
-     */
     private function processIteratorServices(string $tag): array
     {
         return array_keys($this->getContainerBuilder()->findByTag($tag));
     }
 
-    /**
-     * @param string $tag
-     *
-     * @return array
-     */
     private function processIteratorResolverServices(string $tag): array
     {
         $services = [];
@@ -255,11 +218,6 @@ class ServiceCollectionsExtension extends CompilerExtension
         return $services;
     }
 
-    /**
-     * @param int $type
-     *
-     * @return string
-     */
     private function typeToString(int $type): string
     {
         switch ($type) {
