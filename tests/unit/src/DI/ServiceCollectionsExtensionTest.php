@@ -72,11 +72,8 @@ class ServiceCollectionsExtensionTest extends Unit
 
     /**
      * @dataProvider dataForCollectionException
-     *
-     * @param int    $type
-     * @param string $message
      */
-    public function testOverrideCollectionException($type, $message): void
+    public function testOverrideCollectionException(int $type, string $message): void
     {
         $service = sprintf('service_collections.%d.tag', $type);
 
