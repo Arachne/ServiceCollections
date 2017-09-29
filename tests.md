@@ -2,9 +2,6 @@ How to run tests
 ====
 
 ```
-# go to the project's root directory, but NOT the tests subdirectory
-cd <project_dir>
-
 # install dependencies
 composer update
 
