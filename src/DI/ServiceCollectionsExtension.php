@@ -87,13 +87,13 @@ class ServiceCollectionsExtension extends CompilerExtension
         $builder = $this->getContainerBuilder();
 
         $builder->addDefinition($this->prefix('resolverFactory'))
-            ->setClass(ResolverFactory::class);
+            ->setType(ResolverFactory::class);
 
         $builder->addDefinition($this->prefix('iteratorFactory'))
-            ->setClass(IteratorFactory::class);
+            ->setType(IteratorFactory::class);
 
         $builder->addDefinition($this->prefix('iteratorResolverFactory'))
-            ->setClass(IteratorResolverFactory::class);
+            ->setType(IteratorResolverFactory::class);
     }
 
     public function beforeCompile(): void
@@ -156,7 +156,7 @@ class ServiceCollectionsExtension extends CompilerExtension
         $this
             ->getContainerBuilder()
             ->addDefinition($this->prefix($name))
-            ->setClass($class)
+            ->setType($class)
             ->setFactory(sprintf('@%s::create', $factory), [$services])
             ->setAutowired(false);
     }
