@@ -2,10 +2,7 @@ How to run tests
 ====
 
 ```
-# install php-cs-fixer and phpstan
-composer tools
-
-# go to the project's root directory, but NOT the tests subdirectory 
+# go to the project's root directory, but NOT the tests subdirectory
 cd <project_dir>
 
 # install dependencies
