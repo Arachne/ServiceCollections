@@ -22,7 +22,7 @@ class IteratorResolverFactory
     }
 
     /**
-     * @param string[][]
+     * @param string[][] $services
      */
     public function create(array $services): Closure
     {
