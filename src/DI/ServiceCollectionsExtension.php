@@ -143,7 +143,7 @@ class ServiceCollectionsExtension extends CompilerExtension
         foreach ($builder->findByTag($tag) as $name => $attributes) {
             $class = $builder->getDefinition($name)->getClass();
 
-            if ($class !== $implement && !is_subclass_of($class, $implement)) {
+            if (!$class || ($class !== $implement && !is_subclass_of($class, $implement))) {
                 throw new AssertionException(
                     sprintf('Service "%s" is not an instance of "%s".', $name, $implement)
                 );

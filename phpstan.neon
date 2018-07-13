@@ -9,4 +9,3 @@ parameters:
         - %rootDir%/../../../tests/_*
 
     ignoreErrors:
-        - '#^Call to an undefined method Eloquent\\Phony\\Verification\\CardinalityVerifier::calledWith\(\)#'
