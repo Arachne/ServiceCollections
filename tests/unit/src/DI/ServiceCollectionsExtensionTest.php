@@ -28,7 +28,7 @@ class ServiceCollectionsExtensionTest extends Unit
         $this->extension->setCompiler(Phony::mock(Compiler::class)->get(), 'service_collections');
     }
 
-    public function testGetCollection()
+    public function testGetCollection(): void
     {
         self::assertSame('service_collections.1.tag', $this->extension->getCollection(ServiceCollectionsExtension::TYPE_RESOLVER, 'tag'));
         self::assertSame('service_collections.1.tag', $this->extension->getCollection(ServiceCollectionsExtension::TYPE_RESOLVER, 'tag', DateTime::class));

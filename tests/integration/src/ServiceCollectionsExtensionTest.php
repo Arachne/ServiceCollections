@@ -22,19 +22,19 @@ class ServiceCollectionsExtensionTest extends Unit
     {
         $resolver = $this->tester->getContainer()->getService('arachne.serviceCollections.1.foo');
 
-        $this->assertEquals(new ArrayObject(['foo1']), call_user_func($resolver, 'name1'));
-        $this->assertEquals(new ArrayObject(['foo2']), call_user_func($resolver, 'name2'));
-        $this->assertEquals(new ArrayObject(['foo2']), call_user_func($resolver, 'name3'));
-        $this->assertEquals(new ArrayObject(['foo3']), call_user_func($resolver, 'name4'));
-        $this->assertSame(null, call_user_func($resolver, 'name5'));
-        $this->assertSame(null, call_user_func($resolver, 'name6'));
+        self::assertEquals(new ArrayObject(['foo1']), call_user_func($resolver, 'name1'));
+        self::assertEquals(new ArrayObject(['foo2']), call_user_func($resolver, 'name2'));
+        self::assertEquals(new ArrayObject(['foo2']), call_user_func($resolver, 'name3'));
+        self::assertEquals(new ArrayObject(['foo3']), call_user_func($resolver, 'name4'));
+        self::assertSame(null, call_user_func($resolver, 'name5'));
+        self::assertSame(null, call_user_func($resolver, 'name6'));
     }
 
     public function testIterator(): void
     {
         $iterator = $this->tester->getContainer()->getService('arachne.serviceCollections.2.foo');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 new ArrayObject(['foo1']),
                 new ArrayObject(['foo2']),
@@ -48,11 +48,11 @@ class ServiceCollectionsExtensionTest extends Unit
     {
         $resolver = $this->tester->getContainer()->getService('arachne.serviceCollections.3.foo');
 
-        $this->assertEquals([new ArrayObject(['foo1'])], iterator_to_array(call_user_func($resolver, 'name1')));
-        $this->assertEquals([new ArrayObject(['foo2'])], iterator_to_array(call_user_func($resolver, 'name2')));
-        $this->assertEquals([new ArrayObject(['foo2'])], iterator_to_array(call_user_func($resolver, 'name3')));
-        $this->assertEquals([new ArrayObject(['foo3'])], iterator_to_array(call_user_func($resolver, 'name4')));
-        $this->assertSame(null, call_user_func($resolver, 'name5'));
-        $this->assertSame(null, call_user_func($resolver, 'name6'));
+        self::assertEquals([new ArrayObject(['foo1'])], iterator_to_array(call_user_func($resolver, 'name1')));
+        self::assertEquals([new ArrayObject(['foo2'])], iterator_to_array(call_user_func($resolver, 'name2')));
+        self::assertEquals([new ArrayObject(['foo2'])], iterator_to_array(call_user_func($resolver, 'name3')));
+        self::assertEquals([new ArrayObject(['foo3'])], iterator_to_array(call_user_func($resolver, 'name4')));
+        self::assertSame(null, call_user_func($resolver, 'name5'));
+        self::assertSame(null, call_user_func($resolver, 'name6'));
     }
 }

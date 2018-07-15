@@ -48,7 +48,7 @@ class ServiceCollectionsExtension extends CompilerExtension
             return $this->overrides[$type][$tag];
         }
 
-        if ($implement && isset($this->services[$type][$tag]) && $this->services[$type][$tag] !== $implement) {
+        if ($implement !== null && isset($this->services[$type][$tag]) && $this->services[$type][$tag] !== $implement) {
             throw new AssertionException(
                 sprintf(
                     '%s for tag "%s" already exists with implement type "%s".',
@@ -59,7 +59,7 @@ class ServiceCollectionsExtension extends CompilerExtension
             );
         }
 
-        if (!isset($this->services[$type][$tag]) || $implement) {
+        if (!isset($this->services[$type][$tag]) || $implement !== null) {
             $this->services[$type][$tag] = $implement;
         }
 
@@ -134,7 +134,7 @@ class ServiceCollectionsExtension extends CompilerExtension
 
     private function checkImplementTypes(string $tag, ?string $implement): void
     {
-        if (!$implement) {
+        if ($implement === null) {
             return;
         }
 
@@ -143,7 +143,7 @@ class ServiceCollectionsExtension extends CompilerExtension
         foreach ($builder->findByTag($tag) as $name => $attributes) {
             $class = $builder->getDefinition($name)->getClass();
 
-            if (!$class || ($class !== $implement && !is_subclass_of($class, $implement))) {
+            if ($class === null || ($class !== $implement && !is_subclass_of($class, $implement))) {
                 throw new AssertionException(
                     sprintf('Service "%s" is not an instance of "%s".', $name, $implement)
                 );
