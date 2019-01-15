@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Integration;
 
-use Arachne\Codeception\Module\NetteDIModule;
 use ArrayObject;
 use Codeception\Test\Unit;
+use Contributte\Codeception\Module\NetteDIModule;
 
 /**
  * @author Jáchym Toušek <enumag@gmail.com>
